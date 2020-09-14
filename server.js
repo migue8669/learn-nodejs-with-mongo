@@ -38,7 +38,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         .catch(error => console.error(error))
     })
    
-  // .catch(console.error)
 
 
   app.use(bodyParser.json())
@@ -57,7 +56,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
   .then(result => {      console.log(result)
   })
   .catch(error => console.error(error))
-      // .catch(error => console.error(error))
   
       
 })
@@ -73,46 +71,5 @@ app.delete('/quotes', (req, res) => {
     })
     .catch(error => console.error(error))
    })
-
-            
- 
-          })
-  //   quotesCollection.findOneAndUpdate(/* ... */)
-  //     .then(result => {
-  //        res.json('Success')
-  //      })
-  //     .catch(error => console.error(error))
-  // })})
-    // app.get('/', (req, res) => {
-    //   res.sendFile(__dirname + '/index.html')
-
-    //   db.collection('quotes').find().toArray()
-    //     .then(results => {
-    //       console.log(results)
-    //     })
-    //     .catch(error => console.error(error))
-    //   // ...
-    // }),
-
-// MongoClient.connect(connectionString, (err, client) => {
-//   if (err) return console.error(err)
-//   console.log('Connected to Database')
-//   const db = client.db('star-wars-quotes')
-
-// })
-
-// app.use(bodyParser.urlencoded({ extended: true }))
-// app.get('/', (req, res) => {/*...*/})
-// app.post('/quotes', (req, res) => {  console.log(req.body)
-// })
-
-// app.listen(3000, function() {
-//     console.log('listening on 3200')
-//   })
-
-//   app.get('/', function (req, res) {
-//     res.sendFile(__dirname + '/index.html')
-//   })
-//   app.post('/quotes', (req, res) => {
-//     console.log('Hellooooooooooooooooo!')
-//   })
+   })
+  
