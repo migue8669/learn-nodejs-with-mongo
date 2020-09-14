@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser= require('body-parser');
 const app = express();
+
 const MongoClient = require('mongodb').MongoClient
 connectionString='mongodb+srv://yoda:linkin123@cluster0.smca1.mongodb.net/star-wars?retryWrites=true&w=majority'
 
@@ -57,8 +58,25 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
   })
   .catch(error => console.error(error))
       // .catch(error => console.error(error))
-  })
+  
+      
 })
+app.delete('/quotes', (req, res) => {
+ quotesCollection.deleteOne(
+    { name: req.body.name }
+  )
+    .then(result => {
+      if (result.deletedCount === 0) {
+        return res.json('No quote to delete')
+      }
+      res.json(`Deleted Darth Vadar's quote`)
+    })
+    .catch(error => console.error(error))
+   })
+
+            
+ 
+          })
   //   quotesCollection.findOneAndUpdate(/* ... */)
   //     .then(result => {
   //        res.json('Success')
