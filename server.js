@@ -10,6 +10,35 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     app.listen(3000, function() {
       console.log('listening on 3000')
     })
+    var http = require("https");
+
+    var options = {
+      "method": "GET",
+      "hostname": "bet365-sports-odds.p.rapidapi.com",
+      "port": null,
+      "path": "/v1/bet365/result?event_id=%3Crequired%3E",
+      "headers": {
+        "x-rapidapi-host": "bet365-sports-odds.p.rapidapi.com",
+        "x-rapidapi-key": "8b214088fcmsh1fe438adc083776p1dd1ebjsn2ad13c4ccf3d",
+        "useQueryString": true
+      }
+    };
+    
+    var req = http.request(options, function (res) {
+      var chunks = [];
+    
+      res.on("data", function (chunk) {
+        chunks.push(chunk);
+      });
+    
+      res.on("end", function () {
+        var body = Buffer.concat(chunks);
+        console.log(body.toString());
+      });
+    });
+    
+    req.end();
+    
     app.use(express.static('views/public'))
 
     app.use(bodyParser.urlencoded({ extended: true }))
